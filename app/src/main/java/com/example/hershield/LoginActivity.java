@@ -55,12 +55,13 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Register button click
+        btnRegister = findViewById(R.id.btnRegister);
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "Register clicked", Toast.LENGTH_SHORT).show();
-
-                // TODO: Navigate to RegisterActivity
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
