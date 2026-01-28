@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,11 +33,11 @@ public class RegisterActivity extends AppCompatActivity {
         tvLogin = findViewById(R.id.tvRegisterLogin);
 
         // Register button click
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registerUser();
-            }
+        Button btnRegister = findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(view -> {
+            // Open AddContactActivity
+            Intent intent = new Intent(RegisterActivity.this, AddContactActivity.class);
+            startActivity(intent);
         });
 
         // Login text click → go to Login screen

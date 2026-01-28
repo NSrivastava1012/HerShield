@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,13 +23,12 @@ public class ResetPasswordActivity extends AppCompatActivity {
         // Initialize views
         etNewPassword = findViewById(R.id.etResetNewPassword);
         etConfirmPassword = findViewById(R.id.etResetConfirmPassword);
-        btnContinue = findViewById(R.id.btnContinue);
+        Button btnContinue = findViewById(R.id.btnContinue);
 
-        btnContinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validateAndReset();
-            }
+        btnContinue.setOnClickListener(v -> {
+            Intent intent = new Intent(ResetPasswordActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish(); // prevents coming back to reset page
         });
     }
 
