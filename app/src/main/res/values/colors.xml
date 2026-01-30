@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="deep_purple">#64305F</color>
+    <color name="mid_purple">#97498F</color>
+    <color name="vibrant_pink">#CA62BF</color>
+    <color name="bg_start">#C59EE7</color>
+    <color name="bg_center">#EDCCF3</color>
+    <color name="bg_end">#E2D0F2</color>
+    <color name="nav_text">#D9D9D9</color>
+    <color name="widget_border">#CA62BF</color>
+    <color name="white">#FFFFFF</color>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.hershield;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -8,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,11 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
         tvForgetPassword = findViewById(R.id.tvForgetPassword);
 
-        // LOGIN button
+        // Login button click
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
 
@@ -47,17 +46,20 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Temporary login success
+                // --- NAVIGATION LOGIC ADDED HERE ---
                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-                // 👉 Navigate to HomeActivity
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                // Intent to move from LoginActivity to HomeActivity
+                Intent intent = new Intent(LoginActivity.this, HomePage.class);
                 startActivity(intent);
-                finish(); // prevents going back to login page
+
+                // finish() prevents the user from going back to the login page
+                // when they press the back button from the Home screen.
+                finish();
             }
         });
 
-        // REGISTER button
+        // Register button click
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // FORGOT PASSWORD
+        // Forget password click
         tvForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
