@@ -1,5 +1,6 @@
 package com.example.hershield;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -7,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Intent;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,10 +29,11 @@ public class LoginActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
         tvForgetPassword = findViewById(R.id.tvForgetPassword);
 
-        // Login button click
+        // LOGIN button
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String email = etEmail.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
 
@@ -47,16 +47,17 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                // TEMPORARY LOGIN LOGIC
+                // Temporary login success
                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-                // TODO: Navigate to HomeActivity
+                // 👉 Navigate to HomeActivity
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish(); // prevents going back to login page
             }
         });
 
-        // Register button click
-        btnRegister = findViewById(R.id.btnRegister);
-
+        // REGISTER button
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Forget password click
+        // FORGOT PASSWORD
         tvForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
