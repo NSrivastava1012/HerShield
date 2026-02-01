@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg_gradient">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="179dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/top_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/settings_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:alpha="0.6"
+        android:src="@drawable/ic_home_outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/deep_purple" />
+
+    <View
+        android:id="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/line_gradient"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kaushan_script"
+        android:gravity="center"
+        android:text="Emergency Contacts"
+        android:textColor="#D9D9D9"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/header_bar"
+        app:layout_constraintTop_toTopOf="@id/header_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Police"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+
+                <ImageButton
+                    android:id="@+id/call_police"
+                    android:layout_width="53dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/contact_radial_bg"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_call_white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Pregnancy Medic"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+
+                <ImageButton
+                    android:id="@+id/call_medic"
+                    android:layout_width="53dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/contact_radial_bg"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_call_white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Ambulance"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+
+                <ImageButton
+                    android:id="@+id/call_ambulance"
+                    android:layout_width="53dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/contact_radial_bg"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_call_white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Fire Service"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+
+                <ImageButton
+                    android:id="@+id/call_fire_service"
+                    android:layout_width="53dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/contact_radial_bg"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_call_white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Women Helpline"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+
+                <ImageButton
+                    android:id="@+id/call_women_helpline"
+                    android:layout_width="53dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/contact_radial_bg"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_call_white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Child Helpline"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+
+                <ImageButton
+                    android:id="@+id/call_child_helpline"
+                    android:layout_width="53dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/contact_radial_bg"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_call_white" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

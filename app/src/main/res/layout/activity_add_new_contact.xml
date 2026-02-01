@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg_gradient">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="179dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/top_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/settings_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:alpha="0.6"
+        android:src="@drawable/ic_home_outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/deep_purple" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_logo">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
+
+            <View
+                android:id="@+id/header_bar"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/line_gradient"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kaushan_script"
+                android:gravity="center"
+                android:text="Add Contact"
+                android:textColor="#D9D9D9"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@id/header_bar"
+                app:layout_constraintTop_toTopOf="@id/header_bar" />
+
+            <TextView
+                android:id="@+id/tv_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/kaushan_script"
+                android:text="Name"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_bar" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="327dp"
+                android:layout_height="63dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_gradient_shadow"
+                android:fontFamily="@font/kaushan_script"
+                android:hint="Enter Name"
+                android:paddingHorizontal="22dp"
+                android:textColor="#91000000"
+                android:textColorHint="#91000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name_label" />
+
+            <TextView
+                android:id="@+id/tv_phone_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/kaushan_script"
+                android:text="Phone Number"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_name" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="327dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_gradient_shadow"
+                android:fontFamily="@font/kaushan_script"
+                android:hint="Enter Phone Number"
+                android:inputType="phone"
+                android:paddingHorizontal="22dp"
+                android:textColor="#91000000"
+                android:textColorHint="#91000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone_label" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_add"
+                android:layout_width="220dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/bg_add_contacts"
+                android:fontFamily="@font/kaushan_script"
+                android:text="Add"
+                android:textAllCaps="false"
+                android:textColor="#E2D0F2"
+                android:textSize="25sp"
+                android:elevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_phone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

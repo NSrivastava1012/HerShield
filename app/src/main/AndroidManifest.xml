@@ -25,9 +25,12 @@
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".RegisterActivity" />
-
         <activity android:name=".HomePage" />
+        <activity android:name=".EmergencyContactPageActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".HelplineNumberActivity" />
+        <activity android:name=".AddContactActivity" />
+        <activity android:name=".SettingActivity" />
 
     </application>
-
 </manifest>

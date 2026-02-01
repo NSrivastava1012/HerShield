@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg_gradient">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="179dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/top_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/settings_icon_top"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="12dp"
+        android:alpha="0.6"
+        android:src="@drawable/ic_home_outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/deep_purple" />
+
+    <View
+        android:id="@+id/header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/line_gradient"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kaushan_script"
+        android:gravity="center"
+        android:text="Settings"
+        android:textColor="#D9D9D9"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/header_bar"
+        app:layout_constraintTop_toTopOf="@id/header_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="17dp"
+            android:paddingTop="70dp"
+            android:paddingBottom="40dp">
+
+            <RelativeLayout
+                android:id="@+id/item_notifications"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <ImageView
+                    android:id="@+id/icon_notif"
+                    android:layout_width="35dp"
+                    android:layout_height="33dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:src="@drawable/ic_notifications"
+                    app:tint="#1D1B20" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Notifications"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+
+                <FrameLayout
+                    android:id="@+id/switch_notifications"
+                    android:layout_width="62dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/switch_track_custom"
+                    android:elevation="4dp">
+
+                    <View
+                        android:id="@+id/switch_thumb"
+                        android:layout_width="34dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="2dp"
+                        android:background="@drawable/switch_thumb_custom" />
+
+                </FrameLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/item_share"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <ImageView
+                    android:layout_width="29dp"
+                    android:layout_height="29dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:src="@drawable/ic_share"
+                    app:tint="#1D1B20" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Share App"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/item_about"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_marginBottom="22dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <ImageView
+                    android:layout_width="29dp"
+                    android:layout_height="29dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:src="@drawable/ic_about_us"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="About us"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/item_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginBottom="19dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <ImageView
+                    android:layout_width="29dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="30dp"
+                    android:src="@drawable/ic_feedback"
+                    app:tint="#1E1E1E" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Feedback"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/item_logout"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:background="@drawable/btn_gradient_shadow">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:src="@drawable/ic_logout"
+                    app:tint="#1E1E1E" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/kaushan_script"
+                    android:text="Logout"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
