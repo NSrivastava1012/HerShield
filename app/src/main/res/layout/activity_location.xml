@@ -1,10 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LocationActivity">
+    android:background="@drawable/main_bg_gradient">
+
+    <!-- 🔝 Scroll Area -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav_bg"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp">
+
+            <!-- Logo -->
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="179dp"
+                android:layout_height="101dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/top_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Settings -->
+            <ImageView
+                android:id="@+id/settings_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="24dp"
+                android:alpha="0.6"
+                android:src="@drawable/ic_home_outline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/deep_purple" />
+
+            <!-- Header -->
+            <View
+                android:id="@+id/header_bar"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_marginTop="92dp"
+                android:background="@drawable/line_gradient"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kaushan_script"
+                android:gravity="center"
+                android:text="Live Location"
+                android:textColor="#D9D9D9"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@id/header_bar"
+                app:layout_constraintTop_toTopOf="@id/header_bar" />
+
+            <!-- 🗺️ MAP CONTAINER -->
+            <FrameLayout
+                android:id="@+id/map_container"
+                android:layout_width="0dp"
+                android:layout_height="400dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/btn_gradient_shadow"
+                app:layout_constraintTop_toBottomOf="@id/header_bar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- Google Map -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <org.osmdroid.views.MapView
+                        android:id="@+id/map"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"/>
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- 📍 Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_location"
+                android:layout_width="340dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/bg_add_contacts"
+                android:fontFamily="@font/kaushan_script"
+                android:text="Get Current Location"
+                android:textAllCaps="false"
+                android:textColor="#E2D0F2"
+                android:textSize="22sp"
+                app:layout_constraintTop_toBottomOf="@id/map_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- 🔻 Bottom Background -->
+    <View
+        android:id="@+id/bottom_nav_bg"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginHorizontal="-16dp"
+        android:background="@drawable/bottom_nav_shape"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- 🔻 Bottom Nav -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bottom_nav_bg">
+
+        <ImageView
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home_outline"
+            app:tint="@color/white" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <View
+                android:layout_width="76dp"
+                android:layout_height="79dp"
+                android:layout_gravity="center"
+                android:alpha="0.4"
+                android:background="@drawable/nav_item_highlight" />
+
+            <ImageView
+                android:id="@+id/nav_location"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_location_pin"
+                app:tint="@color/white" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/nav_call"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_call_white"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/nav_profile"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_user_profile"
+            app:tint="@color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

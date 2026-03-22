@@ -55,7 +55,7 @@ public class HomePage extends AppCompatActivity {
         // Location Widget
         MaterialCardView widgetLocation = findViewById(R.id.widget_3);
         widgetLocation.setOnClickListener(v -> {
-            startActivity(new Intent(HomePage.this, ProfileActivity.class));
+            startActivity(new Intent(HomePage.this, LocationActivity.class));
         });
 
         // Profile Widget
