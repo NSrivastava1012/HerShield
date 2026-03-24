@@ -50,6 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Load profile from server
         loadProfile();
+        setupNavigationIcons();
 
         btnLogout.setOnClickListener(v -> {
             prefs.edit().clear().apply();
@@ -74,5 +75,10 @@ public class ProfileActivity extends AppCompatActivity {
                 error -> Toast.makeText(this, "Failed to load profile", Toast.LENGTH_SHORT).show()
         );
         queue.add(request);
+    }
+
+    private void setupNavigationIcons() {
+        findViewById(R.id.settings_icon).setOnClickListener(v ->
+                startActivity(new Intent(this, SettingActivity.class)));
     }
 }

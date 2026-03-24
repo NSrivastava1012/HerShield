@@ -57,6 +57,7 @@ public class EmergencyContactPageActivity extends AppCompatActivity {
 
         // Load contacts from server
         loadContacts();
+        setupNavigationIcons();
     }
 
     @Override
@@ -91,5 +92,10 @@ public class EmergencyContactPageActivity extends AppCompatActivity {
                 error -> Toast.makeText(this, "Failed to load contacts", Toast.LENGTH_SHORT).show()
         );
         queue.add(request);
+    }
+
+    private void setupNavigationIcons() {
+        findViewById(R.id.settings_icon).setOnClickListener(v ->
+                startActivity(new Intent(this, HomePage.class)));
     }
 }

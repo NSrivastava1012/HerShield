@@ -3,6 +3,7 @@ package com.example.hershield;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -117,5 +118,9 @@ public class LocationActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
         }
+    }
+    private void setupNavigationIcons() {
+        findViewById(R.id.settings_icon).setOnClickListener(v ->
+                startActivity(new Intent(this, HomePage.class)));
     }
 }

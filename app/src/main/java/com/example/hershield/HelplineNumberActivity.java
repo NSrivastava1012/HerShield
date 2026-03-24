@@ -16,6 +16,7 @@ public class HelplineNumberActivity extends AppCompatActivity {
 
         // Initialize and setup buttons
         setupCallingButtons();
+        setupNavigationIcons();
     }
 
     private void setupCallingButtons() {
@@ -49,5 +50,10 @@ public class HelplineNumberActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "Unable to open dialer", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void setupNavigationIcons() {
+        findViewById(R.id.settings_icon).setOnClickListener(v ->
+                startActivity(new Intent(this, HomePage.class)));
     }
 }

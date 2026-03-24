@@ -1,5 +1,6 @@
 package com.example.hershield;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -41,6 +42,7 @@ public class AddNewContact extends AppCompatActivity {
         btnAdd = findViewById(R.id.btn_add);
 
         btnAdd.setOnClickListener(v -> saveContact());
+        setupNavigationIcons();
     }
 
     private void saveContact() {
@@ -69,5 +71,9 @@ public class AddNewContact extends AppCompatActivity {
                 error -> Toast.makeText(this, "Failed to add contact", Toast.LENGTH_SHORT).show()
         );
         queue.add(request);
+    }
+    private void setupNavigationIcons() {
+        findViewById(R.id.settings_icon).setOnClickListener(v ->
+                startActivity(new Intent(this, HomePage.class)));
     }
 }
