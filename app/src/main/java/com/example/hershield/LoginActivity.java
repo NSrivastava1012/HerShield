@@ -8,73 +8,80 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
+import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail, etPassword;
     Button btnLogin, btnRegister;
     TextView tvForgetPassword;
+    RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Initialize views
+        queue = Volley.newRequestQueue(this);
+
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
         tvForgetPassword = findViewById(R.id.tvForgetPassword);
 
-        // Login button click
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email = etEmail.getText().toString().trim();
-                String password = etPassword.getText().toString().trim();
+        btnLogin.setOnClickListener(view -> {
+            String email = etEmail.getText().toString().trim();
+            String password = etPassword.getText().toString().trim();
 
-                if (TextUtils.isEmpty(email)) {
-                    etEmail.setError("Email required");
-                    return;
-                }
+            if (TextUtils.isEmpty(email)) { etEmail.setError("Email required"); return; }
+            if (TextUtils.isEmpty(password)) { etPassword.setError("Password required"); return; }
 
-                if (TextUtils.isEmpty(password)) {
-                    etPassword.setError("Password required");
-                    return;
-                }
+            JSONObject body = new JSONObject();
+            try {
+                body.put("email", email);
+                body.put("password", password);
+            } catch (JSONException e) { e.printStackTrace(); }
 
-                // --- NAVIGATION LOGIC ADDED HERE ---
-                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+            JsonObjectRequest request = new JsonObjectRequest(
+                    Request.Method.POST,
+                    ApiClient.BASE_URL + "/login",
+                    body,
+                    response -> {
+                        try {
+                            if (response.getString("status").equals("success")) {
+                                // Save user info
+                                SharedPreferences prefs = getSharedPreferences("HerShield", MODE_PRIVATE);
+                                prefs.edit()
+                                        .putInt("user_id", response.getInt("user_id"))
+                                        .putString("name", response.getString("name"))
+                                        .apply();
 
-                // Intent to move from LoginActivity to HomeActivity
-                Intent intent = new Intent(LoginActivity.this, HomePage.class);
-                startActivity(intent);
-
-                // finish() prevents the user from going back to the login page
-                // when they press the back button from the Home screen.
-                finish();
-            }
+                                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(this, HomePage.class));
+                                finish();
+                            }
+                        } catch (JSONException e) { e.printStackTrace(); }
+                    },
+                    error -> Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
+            );
+            queue.add(request);
         });
 
-        // Register button click
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+        btnRegister.setOnClickListener(view ->
+                startActivity(new Intent(this, RegisterActivity.class)));
 
-        // Forget password click
-        tvForgetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
-                startActivity(intent);
-            }
-        });
+        tvForgetPassword.setOnClickListener(view ->
+                startActivity(new Intent(this, ForgotPasswordActivity.class)));
     }
 }

@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HerShield">
 
+
         <activity
             android:name=".SplashActivity"
             android:exported="true">

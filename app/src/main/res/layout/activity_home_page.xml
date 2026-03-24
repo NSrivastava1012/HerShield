@@ -269,35 +269,92 @@
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/tv_saved_contacts">
 
-                <ImageButton
+                <LinearLayout
                     android:id="@+id/contact_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:padding="20dp"
+                        android:scaleType="centerInside"
+                        android:background="@drawable/contact_radial_bg"
+                        android:src="@drawable/ic_person_white" />
+
+                    <TextView
+                        android:id="@+id/tv_contact_name_1"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp"
+                        android:text="" />
+                </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contact_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_margin="8dp"
                     android:padding="20dp"
                     android:scaleType="centerInside"
                     android:background="@drawable/contact_radial_bg"
                     android:src="@drawable/ic_person_white" />
 
+                <TextView
+                    android:id="@+id/tv_contact_name_2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contact_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageButton
-                    android:id="@+id/contact_2"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_margin="8dp"
                     android:padding="20dp"
                     android:scaleType="centerInside"
                     android:background="@drawable/contact_radial_bg"
                     android:src="@drawable/ic_person_white" />
 
-                <ImageButton
-                    android:id="@+id/contact_3"
+                <TextView
+                    android:id="@+id/tv_contact_name_3"
                     android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="8dp"
-                    android:padding="20dp"
-                    android:scaleType="centerInside"
-                    android:background="@drawable/contact_radial_bg"
-                    android:src="@drawable/ic_person_white" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp"
+                    android:text="" />
+            </LinearLayout>
 
             </LinearLayout>
 

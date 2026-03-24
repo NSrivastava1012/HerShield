@@ -78,6 +78,8 @@
 
             <EditText
                 android:id="@+id/et_user_name"
+                android:focusable="false"
+                android:clickable="false"
                 android:layout_width="327dp"
                 android:layout_height="68dp"
                 android:layout_marginTop="72dp"
@@ -93,6 +95,8 @@
 
             <EditText
                 android:id="@+id/et_phone_number"
+                android:focusable="false"
+                android:clickable="false"
                 android:layout_width="327dp"
                 android:layout_height="68dp"
                 android:layout_marginTop="39dp"
@@ -108,34 +112,19 @@
                 app:layout_constraintTop_toBottomOf="@id/et_user_name" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_save"
-                android:layout_width="172dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="39dp"
-                android:background="@drawable/bg_add_contacts"
-                android:fontFamily="@font/kaushan_script"
-                android:text="Save"
-                android:textAllCaps="false"
-                android:textColor="#E2D0F2"
-                android:textSize="25sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_phone_number" />
-
-            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_logout"
-                android:layout_width="172dp"
+                android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginTop="39dp"
                 android:background="@drawable/bg_add_contacts"
                 android:fontFamily="@font/kaushan_script"
                 android:text="Log Out"
                 android:textAllCaps="false"
                 android:textColor="#E2D0F2"
                 android:textSize="25sp"
-                app:layout_constraintBottom_toBottomOf="@id/btn_save"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/btn_save" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_phone_number" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

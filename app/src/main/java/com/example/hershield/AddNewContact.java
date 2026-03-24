@@ -1,62 +1,73 @@
 package com.example.hershield;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class AddNewContact extends AppCompatActivity {
 
-    // Declare UI elements
-    private EditText etName;
-    private EditText etPhone;
+    private EditText etName, etPhone;
     private AppCompatButton btnAdd;
+    private RequestQueue queue;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_contact);
 
-        // 1. Initialize views using the IDs from your XML
+        queue = Volley.newRequestQueue(this);
+
+        // Get user_id from SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("HerShield", MODE_PRIVATE);
+        userId = prefs.getInt("user_id", -1);
+
         etName = findViewById(R.id.et_name);
         etPhone = findViewById(R.id.et_phone);
         btnAdd = findViewById(R.id.btn_add);
 
-        // 2. Set click listener for the "Add" button
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveContact();
-            }
-        });
+        btnAdd.setOnClickListener(v -> saveContact());
     }
 
     private void saveContact() {
-        // Get data from input fields
         String name = etName.getText().toString().trim();
         String phone = etPhone.getText().toString().trim();
 
-        // 3. Simple Validation
-        if (TextUtils.isEmpty(name)) {
-            etName.setError("Please enter a name");
-            return;
-        }
+        if (TextUtils.isEmpty(name)) { etName.setError("Please enter a name"); return; }
+        if (TextUtils.isEmpty(phone)) { etPhone.setError("Please enter a phone number"); return; }
 
-        if (TextUtils.isEmpty(phone)) {
-            etPhone.setError("Please enter a phone number");
-            return;
-        }
+        JSONObject body = new JSONObject();
+        try {
+            body.put("user_id", userId);
+            body.put("name", name);
+            body.put("phone", phone);
+        } catch (JSONException e) { e.printStackTrace(); }
 
-        // 4. Logic to save the contact
-        // For now, we display a Toast message
-        String message = "Contact Added: " + name + " (" + phone + ")";
-        Toast.makeText(AddNewContact.this, message, Toast.LENGTH_LONG).show();
-
-        // Optional: Clear fields after adding
-        etName.setText("");
-        etPhone.setText("");
+        JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                ApiClient.BASE_URL + "/contacts/add",
+                body,
+                response -> {
+                    Toast.makeText(this, "Contact added: " + name, Toast.LENGTH_LONG).show();
+                    etName.setText("");
+                    etPhone.setText("");
+                },
+                error -> Toast.makeText(this, "Failed to add contact", Toast.LENGTH_SHORT).show()
+        );
+        queue.add(request);
     }
 }

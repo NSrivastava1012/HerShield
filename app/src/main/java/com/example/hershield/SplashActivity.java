@@ -1,6 +1,7 @@
 package com.example.hershield;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,14 +15,19 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Delay for splash screen (2 seconds)
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish(); // close splash so user can't come back
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            SharedPreferences prefs = getSharedPreferences("HerShield", MODE_PRIVATE);
+            int userId = prefs.getInt("user_id", -1);
+
+            // If already logged in, go straight to HomePage
+            Intent intent;
+            if (userId != -1) {
+                intent = new Intent(this, HomePage.class);
+            } else {
+                intent = new Intent(this, LoginActivity.class);
             }
+            startActivity(intent);
+            finish();
         }, 2000);
     }
 }

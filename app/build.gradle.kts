@@ -43,4 +43,5 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation("org.osmdroid:osmdroid-android:6.1.16")
+    implementation("com.android.volley:volley:1.2.1")
 }
