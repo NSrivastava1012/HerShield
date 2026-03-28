@@ -174,5 +174,16 @@
             android:src="@drawable/ic_user_profile"
             app:tint="@color/white" />
     </LinearLayout>
+    <Button
+        android:id="@+id/btn_test_sos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test SOS"
+        android:backgroundTint="#CC0000"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

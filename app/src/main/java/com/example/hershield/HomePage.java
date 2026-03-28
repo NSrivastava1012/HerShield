@@ -26,6 +26,7 @@ public class HomePage extends AppCompatActivity {
     private ProgressBar battery_progress_bar;
     private TextView tv_battery_percentage;
     private RequestQueue queue;
+    private BluetoothService bluetoothService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +44,56 @@ public class HomePage extends AppCompatActivity {
 
         battery_progress_bar = findViewById(R.id.battery_progress_bar);
         tv_battery_percentage = findViewById(R.id.tv_battery_percentage);
-        updateBluetoothBatteryUI(75, true);
+        updateBluetoothBatteryUI(0, false); // Start at 0 until hardware connects
 
         setupWidgetNavigation();
         setupNavigationIcons();
         loadSavedContacts();
+        setupBluetooth(); // Connect to ESP32
+    }
+
+    private void setupBluetooth() {
+        bluetoothService = new BluetoothService(this, new BluetoothService.BluetoothListener() {
+            @Override
+            public void onConnected() {
+                Toast.makeText(HomePage.this, "Hardware connected!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onDisconnected() {
+                Toast.makeText(HomePage.this, "Hardware disconnected", Toast.LENGTH_SHORT).show();
+                updateBluetoothBatteryUI(0, false);
+            }
+
+            @Override
+            public void onSOSReceived() {
+                // Navigate to LocationActivity and trigger SOS
+                Intent intent = new Intent(HomePage.this, LocationActivity.class);
+                intent.putExtra("TRIGGER_SOS", true);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onBatteryReceived(int level) {
+                // Update battery ring with hardware battery level
+                updateBluetoothBatteryUI(level, true);
+            }
+
+            @Override
+            public void onConnectionFailed(String error) {
+                Toast.makeText(HomePage.this, error, Toast.LENGTH_LONG).show();
+                // Keep showing 0% if hardware not connected
+                updateBluetoothBatteryUI(0, false);
+            }
+        });
+
+        bluetoothService.connect();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (bluetoothService != null) bluetoothService.disconnect();
     }
 
     private void setupWidgetNavigation() {
@@ -93,11 +139,9 @@ public class HomePage extends AppCompatActivity {
                                 String contactName = contacts.getJSONObject(i).getString("name");
                                 String contactPhone = contacts.getJSONObject(i).getString("phone");
 
-                                // Set name below icon
                                 TextView tv = findViewById(contactNameIds[i]);
                                 if (tv != null) tv.setText(contactName);
 
-                                // Click to dial
                                 LinearLayout contactLayout = findViewById(contactLayoutIds[i]);
                                 final String phone = contactPhone;
                                 if (contactLayout != null) {
@@ -116,16 +160,18 @@ public class HomePage extends AppCompatActivity {
         queue.add(request);
     }
 
-    private void updateBluetoothBatteryUI(int level, boolean isCharging) {
+    private void updateBluetoothBatteryUI(int level, boolean isConnected) {
         battery_progress_bar.setProgress(level);
         tv_battery_percentage.setText(level + "%");
         try {
             RotateDrawable rotateDrawable = (RotateDrawable) battery_progress_bar.getProgressDrawable();
             GradientDrawable gradient = (GradientDrawable) rotateDrawable.getDrawable();
-            if (isCharging) {
+            if (isConnected) {
+                // Purple gradient when hardware connected
                 gradient.setColors(new int[]{0xFFCA62BF, 0xFF97498F, 0xFF64305F});
             } else {
-                gradient.setColors(new int[]{0xFFEDCCF3, 0xFFC59EE7, 0xFF97498F});
+                // Grey gradient when hardware not connected
+                gradient.setColors(new int[]{0xFFCCCCCC, 0xFF999999, 0xFF666666});
             }
             gradient.setGradientType(GradientDrawable.SWEEP_GRADIENT);
         } catch (Exception e) { e.printStackTrace(); }
