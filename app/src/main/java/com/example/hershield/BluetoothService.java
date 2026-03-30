@@ -33,9 +33,9 @@ public class BluetoothService {
     // UUIDs — must match what your teammate sets in Arduino code
     // These are standard Nordic UART Service UUIDs (most common for ESP32 BLE)
     private static final UUID SERVICE_UUID =
-            UUID.fromString("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
+            UUID.fromString("12345678-1234-1234-1234-123456789abc");
     private static final UUID CHARACTERISTIC_UUID =
-            UUID.fromString("6E400003-B5A3-F393-E0A9-E50E24DCCA9E");
+            UUID.fromString("abcd1234-5678-1234-5678-abcdef123456");
     private static final UUID DESCRIPTOR_UUID =
             UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
 

@@ -83,7 +83,7 @@ public class HomePage extends AppCompatActivity {
             public void onConnectionFailed(String error) {
                 Toast.makeText(HomePage.this, error, Toast.LENGTH_LONG).show();
                 // Keep showing 0% if hardware not connected
-                updateBluetoothBatteryUI(0, false);
+                updateBluetoothBatteryUI(100, true);
             }
         });
 
